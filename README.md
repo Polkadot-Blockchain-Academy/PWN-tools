@@ -15,8 +15,23 @@ PWN requires you come with:
 The scripts depend on installations of:
 
 - `sha512sum` (via [OS package manager](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos))
-- `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
+- CUSTOM `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
 - `jq` (va [OS package manager](https://stedolan.github.io/jq/))
+
+### Install Custom Subkey
+
+Sadly behavior to make this work needs a patch not yet ready...
+
+```sh
+# Clone or cd into substrate repo...
+# Get the right substrate branch
+git checkout oty-subkey-respect-hex
+
+# Install your custom subkey v 3.0.0
+cargo install subkey --path bin/utils/subkey/ --force
+```
+
+> **NOTE: you may want to revert to the `master` subkey branch installation, if you depend on old subkey behavior elsewhere!**
 
 These scripts gotta run 😉:
 
