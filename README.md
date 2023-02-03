@@ -15,12 +15,12 @@ PWN requires you come with:
 The scripts depend on installations of:
 
 - `sha512sum` (via [OS package manager](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos))
-- CUSTOM `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
+- *CUSTOM* `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
 - `jq` (va [OS package manager](https://stedolan.github.io/jq/))
 
 ### Install Custom Subkey
 
-Sadly behavior to make this work needs a patch not yet ready...
+[A patch](https://github.com/paritytech/substrate/pull/13258) is needed until it's applied to `master` on Substrate:
 
 ```sh
 # Clone or cd into substrate repo...
@@ -40,6 +40,8 @@ These scripts gotta run 😉:
 chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh verify-proof-of-win.sh
 ```
 
+----
+
 ## 🔏 Generate PWN
 
 - [./generate-proof-of-win-private-key.sh](./generate-proof-of-win-private-key.sh)
@@ -49,9 +51,10 @@ chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh
 
 🏆 You will also need a **prize secret** from the Academy games (three words) generated payload... but wait...
 
-😱 _Share your secrets?!_
-⛔ **_NO WAY, Jose!_**
-
+>😱 _Share your secrets?!_
+>
+>⛔ **_NO WAY, Jose!_**
+>
 > 🙈 Much like good practice in password checking, we don't request or store plain text!
 >
 > 🧂 Instead we [salt & hash](https://www.okta.com/blog/2019/03/what-are-salted-passwords-and-password-hashing/) your prize secrets
@@ -83,17 +86,19 @@ So as an example, `PWN-14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc.json` wi
 }
 ```
 
+---
+
 ## 🔎 Verify PWN
 
--[./verify-proof-of-win.sh](./verify-proof-of-win.sh)
-
-- This verifies a PWN json file correctly passes tests.
+- [./verify-proof-of-win.sh](./verify-proof-of-win.sh)
+  - This verifies a PWN json file correctly passes tests.
+  - You can test this by checking the example above 😉.
 
 ### 🏃 Running
 
 ```sh
 # Option with private key or mnemonic
-./verify-proof-of-win.sh <path to PWN JSON>
+./verify-proof-of-win.sh <path/to/PWN-$ADDRESS.json>
 ```
 
 🎉 You know it's good if you get `Signature verifies correctly.`
