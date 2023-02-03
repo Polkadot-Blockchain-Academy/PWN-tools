@@ -1,7 +1,4 @@
-<p align="center">
-<img alt="Polkadot Blockchain Academy" src="https://gateway.pinata.cloud/ipfs/QmdAthFeGzgsW65vhnSTBNN2wWdjL75MvU3tYxVgteaCzW" style="width:350px;">
-<h1 align="center">Blockchain Academy<br>Proof-of-Winning Tools</h1>
-</p>
+
 
 Included here are scripts to generate and verify a **Proof-of-Winning (PWN)** JSON payloads.
 
@@ -16,7 +13,9 @@ The scripts depend on installations of:
 
 - `sha512sum` (via [OS package manager](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos))
 - `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
-- `jq` (va [OS package manager](https://stedolan.github.io/jq/))
+- `jq` (via [OS package manager](https://stedolan.github.io/jq/))
+- `xxd` (via [OS package manager](https://unix.stackexchange.com/questions/1316/convert-ascii-code-to-hexadecimal-in-unix-shell-script))
+
 
 These scripts gotta run 😉:
 
@@ -49,10 +48,10 @@ Fire up these puppies, and **follow the prompts** - do so **_carefully and compl
 
 ```sh
 # Option with private key or mnemonic
-./generate-proof-of-win-signature.sh
+./generate-proof-of-win-private-key.sh
 
 # Option with Polkadot.js wallet
-./generate-proof-of-win-private-key.sh
+./generate-proof-of-win-signature.sh
 ```
 
 Both scripts produce a payload file of `PWN-<your SS58 address here>.json`.

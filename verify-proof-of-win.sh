@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # #####################################################################
 # Polkadot Blockchain Academy Proof-of-Winning tools
 # Verify a `PWN-<your address>.json` payload
@@ -13,11 +13,25 @@
 # echo    " - sha512sum (OS package manager): https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos"
 # echo    " - subkey (cargo): https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo"
 # echo    " - jq (OS package manager): https://stedolan.github.io/jq/\n"
-
+# echo    " - xxd (OS package manager):https://unix.stackexchange.com/questions/1316/convert-ascii-code-to-hexadecimal-in-unix-shell-script_\n"
 
 # Gather payloads, and run on a single file with this script command:
 
-subkey verify --message "$(jq '.message' "$1" -rj)" "$(jq '.signature' "$1" -rj)" "$(jq '.ss58Address' "$1" -rj)"
+# Sign your provided message username (only)
+# TODO this is correct once this lands: https://github.com/paritytech/substrate/pull/13258
+# subkey verify --message "$(jq '.message' "$1" -rj)" "$(jq '.signature' "$1" -rj)" "$(jq '.ss58Address' "$1" -rj)"
+
+# For now, it's broken enough to need to convert first...
+MESSAGE=$(printf "$(jq '.message' "$1" -rj)")
+# MESSAGE_HEX="0x$(echo $MESSAGE | xxd -ps -c 200)"
+MESSAGE_HEX="$(echo $MESSAGE | xxd -ps -c 200)"
+echo $MESSAGE_HEX
+# cut the new line char at the end 🤦 bash needed
+# MESSAGE_HEX=$(tr '0a' '' < $MESSAGE_HEX)
+MESSAGE_HEX=${MESSAGE_HEX/0a}
+echo $MESSAGE_HEX
+# MESSAGE_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
+subkey verify --message $MESSAGE_HEX "$(jq '.signature' "$1" -rj)" "$(jq '.ss58Address' "$1" -rj)"
 
 # debug, no HD path, most wallets:
 # {

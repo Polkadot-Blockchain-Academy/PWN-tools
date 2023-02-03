@@ -58,7 +58,7 @@ echo "  🕸️ The network for the SS58 address (polkadot, kusama, some paracha
 read NETWORK
 
 # debug, uncomment to override:
-# NETWORK="polkadot"
+NETWORK="polkadot"
 
 echo -n "  🔏 Your need to sign a message out of band from this script.\nProvide a"
 echo   "  📝 A pubic, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n"
@@ -66,7 +66,7 @@ echo   "  📝 A pubic, pseudononymous, message for the Academy class (any text,
 read UNWRAPED_MESSAGE
 
 # debug, uncomment to override:
-# UNWRAPED_MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"
+UNWRAPED_MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"
 
 echo "\n  👆 Copy&Paste into a PJ.js tool to sign (no padding, spaces, or new lines!)\n"
 echo "               🔏 Open up a wallet using Polkadot.js API to sign, maybe via https://polkadot.js.org/apps/#/signing/ ..."
@@ -82,8 +82,8 @@ echo -n "  🔏 Your SIGNATURE for the message (raw hex): "
 read SIGNATURE
 
 # debug, uncomment to override:
-# USING SEED: subkey inspect "middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
-# SIGNATURE="0x78bea5e6ae9973c9842e33c1f37109fd5a8dc4f954cd22a133756a7590fffd0363f956afd24a16a6bcb00a3ce7bfdcc8045dad80b421bd01a8948ff9d2853e8a"
+# seed used for this: subkey inspect "middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
+SIGNATURE="0x78bea5e6ae9973c9842e33c1f37109fd5a8dc4f954cd22a133756a7590fffd0363f956afd24a16a6bcb00a3ce7bfdcc8045dad80b421bd01a8948ff9d2853e8a"
 
 echo    "  🙋 Your PUBLIC KEY (ss58 address or raw hex) used to sign the above"
 echo -n "  💸 THE PRIZE WILL BE SENT HERE (0x..... *or* 14VJA6...): "
@@ -91,7 +91,7 @@ read PUB
 
 # debug, uncomment to override:
 # USING SEED: subkey inspect "middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
-# PUB="14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc"
+PUB="14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc"
 
 echo "  🙈 Your  provided secret is hashed for you by the script,"
 echo "     not exposed in the output.\n"
@@ -99,7 +99,7 @@ echo "  🏆 Your prize secret (three words, space separated):"
 read SECRET
 
 # debug, uncomment to override:
-# SECRET="some thee words"
+SECRET="some thee words"
 
 SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
 
