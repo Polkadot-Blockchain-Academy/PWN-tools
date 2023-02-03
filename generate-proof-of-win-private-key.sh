@@ -58,7 +58,7 @@ echo "  🕸️ The network for the SS58 address (polkadot, kusama, some paracha
 read NETWORK
 
 # debug, uncomment to override:
-NETWORK="polkadot"
+# NETWORK="polkadot"
 
 echo "  📝 A pubic, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n" 
 read MESSAGE
@@ -68,7 +68,7 @@ read MESSAGE
 # for now, use generate-proof-of-win-SIGNATURE.sh instead. see TODO above
 # MESSAGE=<Bytes>I LIKE WINNING! BOOOOO YAAAAAA!</Bytes>
 # Using subkey, raw message
-MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"
+# MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"
 
 echo "  🔑 Your PRIVATE KEY (hex encoding *or* mnemonic & derived path)"
 echo "  💸 THE PRIZE WILL BE SENT HERE (0x..... *or* [12|24 words here]//HD-Wallet///Path):"
@@ -77,7 +77,7 @@ read PRIVATE
 # debug, uncomment to override:
 # PRIVATE="middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
 # HD path works, but not used in most wallets 😭 :
-PRIVATE="middle harsh axis absurd message meadow kick soccer empty left adult giraffe//some///path"
+# PRIVATE="middle harsh axis absurd message meadow kick soccer empty left adult giraffe//some///path"
 
 # subkey needs an sURI = address SS58 or pubkey-hex or privkey-hex
 ADDRESS="$(subkey inspect "$PRIVATE" --network "$NETWORK" --output-type json | jq '.ss58Address' -rj)"
@@ -90,7 +90,7 @@ echo "  🏆 Your prize secret (three words, space separated):"
 read SECRET
 
 # debug, uncomment to override:
-SECRET="some thee words"
+# SECRET="some thee words"
 
 SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
 
