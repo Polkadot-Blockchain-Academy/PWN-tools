@@ -23,12 +23,8 @@ The scripts depend on installations of:
 [A patch](https://github.com/paritytech/substrate/pull/13258) is needed until it's applied to `master` on Substrate:
 
 ```sh
-# Clone or cd into substrate repo...
-# Get the right substrate branch
-git checkout oty-subkey-respect-hex
-
-# Install your custom subkey v 3.0.0
-cargo install subkey --path bin/utils/subkey/ --force
+# Install the required custom `subkey v3.0.0`
+cargo install --force subkey --git https://github.com/paritytech/substrate --branch oty-subkey-respect-hex
 ```
 
 > **NOTE: you may want to revert to the `master` subkey branch installation, if you depend on old subkey behavior elsewhere!**
@@ -67,10 +63,10 @@ Fire up these puppies, and **follow the prompts** - do so **_carefully and compl
 
 ```sh
 # Option with private key or mnemonic
-./generate-proof-of-win-signature.sh
+./generate-proof-of-win-private-key.sh
 
 # Option with Polkadot.js wallet
-./generate-proof-of-win-private-key.sh
+./generate-proof-of-win-signature.sh
 ```
 
 Both scripts produce a payload file of `PWN-<your SS58 address here>.json`.
