@@ -14,9 +14,10 @@ PWN requires you come with:
 
 The scripts depend on installations of:
 
-- `sha512sum` (via [OS package manager](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos))
-- *CUSTOM* `subkey` (via [cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo))
-- `jq` (va [OS package manager](https://stedolan.github.io/jq/))
+- `sha512sum` (Install on: [MacOS](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos) - [Linux & WSL](https://command-not-found.com/sha512sum) - from `coreutils` package)
+- `jq` (Install on: [MacOS](https://stackoverflow.com/questions/37668134/how-to-install-jq-on-mac-on-the-command-line) - [Linux & WSL](https://command-not-found.com/jq))
+- [Custom `subkey`](#install-custom-subkey) 👇
+
 
 ### Install Custom Subkey
 
