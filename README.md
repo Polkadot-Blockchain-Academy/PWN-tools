@@ -40,6 +40,10 @@ chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh
 
 ## 🔏 Generate PWN
 
+> 😱 You would just put secretes into some random executable you found online?!
+>
+> 🫠 ... and put your \_secretes into it?!
+
 ### ❗❗ BEFORE YOU START, READ THE `.sh` SCRIPTS INCLUDED HERE! ❗❗
 
 - [./generate-proof-of-win-private-key.sh](./generate-proof-of-win-private-key.sh)
