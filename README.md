@@ -18,7 +18,6 @@ The scripts depend on installations of:
 - `jq` (Install on: [MacOS](https://stackoverflow.com/questions/37668134/how-to-install-jq-on-mac-on-the-command-line) - [Linux & WSL](https://command-not-found.com/jq))
 - [Custom `subkey`](#install-custom-subkey) 👇
 
-
 ### Install Custom Subkey
 
 [A patch](https://github.com/paritytech/substrate/pull/13258) is needed until it's applied to `master` on Substrate:
@@ -37,26 +36,16 @@ These scripts gotta run 😉:
 chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh verify-proof-of-win.sh
 ```
 
-----
+---
 
 ## 🔏 Generate PWN
+
+### ❗❗ BEFORE YOU START, READ THE `.sh` SCRIPTS INCLUDED HERE! ❗❗
 
 - [./generate-proof-of-win-private-key.sh](./generate-proof-of-win-private-key.sh)
   - This uses `subkey` with a _private key_ provided.
 - [./generate-proof-of-win-signature.sh](./generate-proof-of-win-signature.sh)
   - This uses a Polkadot.js API signed message.
-
-🏆 You will also need a **prize secret** from the Academy games (three words) generated payload... but wait...
-
->😱 _Share your secrets?!_
->
->⛔ **_NO WAY, Jose!_**
->
-> 🙈 Much like good practice in password checking, we don't request or store plain text!
->
-> 🧂 Instead we [salt & hash](https://www.okta.com/blog/2019/03/what-are-salted-passwords-and-password-hashing/) your prize secrets
->
-> 😅 _well... hash, but no salt for now, it's a TODO_
 
 ### 🏃 Running
 
