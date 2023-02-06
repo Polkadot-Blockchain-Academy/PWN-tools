@@ -53,7 +53,7 @@ chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh
 
 ### 🏃 Running
 
-Fire up these puppies, and **follow the prompts** - do so **_carefully and completely_**!
+Fire up the option you want to use, and **follow the prompts** - do so **_carefully and completely_**!
 
 ```sh
 # Option with private key or mnemonic
