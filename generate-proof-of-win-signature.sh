@@ -117,10 +117,6 @@ SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
 # DELETE SECRET
 unset SECRET
 
-ADDRESS="$(subkey inspect "$PUBKEY" --network "$NETWORK" --output-type json | jq '.ss58Address' -rj)"
-
-echo -en "  🙋 Your Pub Key (SS58) for ""$NETWORK"" =""$ADDRESS"
-
 FILE="PWN-""$ADDRESS"".json"
 
 echo -e "\n\n                    👇 🔐 $FILE 🔐 👇"
