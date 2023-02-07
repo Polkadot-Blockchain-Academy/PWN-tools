@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ######################################################################
 # Polkadot Blockchain Academy Proof-of-Winning tools
 # Generate `proof-of-winning.json` payload
@@ -11,56 +11,57 @@
 ## TODO ONCE RESOLVED UPDATE TO MATCH UNIFORM BEHAVIOR:
 ## https://github.com/polkadot-js/apps/issues/8930
 
-echo    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo    "                  Make sure to read and understand what this script does before you use it!"
-echo    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
-echo    " Dependencies:\n"
-echo    " - sha512sum (OS package manager): https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos"
-echo    " - subkey (cargo): https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo"
-echo    " - jq (OS package manager): https://stedolan.github.io/jq/\n"
+clear
+echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo -e "                  Make sure to read and understand what this script does before you use it!"
+echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
+echo -e " Dependencies:\n"
+echo -e " - sha512sum (OS package manager): https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos"
+echo -e " - subkey (cargo): https://github.com/paritytech/substrate/tree/master/bin/utils/subkey#install-with-cargo"
+echo -e " - jq (OS package manager): https://stedolan.github.io/jq/\n"
 
-echo -n "                                     👌 Press [ENTER] to start..."
-read START
+echo -en "                                     👌 Press [ENTER] to start..."
+read -s START
 clear
 
-echo "//////////////////////////////////////////////////////////////////////////////////////////////////////////"
-echo "////////////////           ///////////////////////////////////////////////////////////////////////////////"
-echo "//////////////               /////////////////////////////////////////////////////////////////////////////"
-echo "////////    ////           ////    ////////////////////////////////*  *///////////////////////////////////"
-echo "/////        /////////////////        ////////////////////////////.   ,///////////////////////***/////////"
-echo "////         /////////////////          /////////////////////////*    ///////////////////////.   ,////////"
-echo "///         ////////////////////        /////////////////////////.   ,//////////////////////*.   /////////"
-echo "///      /////////////////////////      //////////////*             .//////*.         .*//*           *///"
-echo "////////////////////////////////////////////////////,.   .,,**,.    ,///*,    .,,,.    ***,.    ,,,,,*////"
-echo "/////  ///////////////////////////////////////////*.   ,*//////,   ,*//*    *//////,   ,//*.   ,//////////"
-echo "///       ///////////////////////       /////////*.   *///////,    *//*    *///////,   ,//*   .///////////"
-echo "///         ///////////////////         ////////*     ///////,    .*//,   .///////,    */*.   ,/////**////"
-echo "////         /////////////////         /////////*     ,///*,.     ,**,     *////*.   .///*.   ,//*.   ,///"
-echo "//////       /////////////////       ////////////,.         ,,       .,.           ,*/////,         .*////"
-echo "///////////////             ////////////////////////**,,,,,*///*,,,,*/////*,,,,**///////////*,,,,**///////"
-echo "///////////////             //////////////////////////////////////////////////////////////////////////////"
-echo "//////////////////       /////////////////////////////////////////////////////////////////////////////////"
-echo "//////////////////////////////////////////////////////////////////////////////////////////////////////////"
-echo ""
-echo "==========================================================================================================\n"
-echo "                           🎉🔐🔏 Blockchain Academy Proof-of-Win (PWN) 🔏🔐🎉\n"
-echo "==========================================================================================================\n"
-echo "                                         This script processes a:"
-echo "                                            - ⚠PRIZE SECRET⚠"
-echo "                                            - ⚠PRIVATE  KEY⚠"
-echo "                              *without* writing them to disk or terminal history.\n"
-echo "                               It outputs a \"PWN-<your address>.json\" to submit"
-echo "                                      to the Academy team to verify 🕵️\n"
-echo "                             You could use any Substrate compatible wallet to sign,"
-echo "                            and instead use the \"generate-proof-of-win-SIGNATURE.sh\"\n"
+echo -e "//////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo -e "////////////////           ///////////////////////////////////////////////////////////////////////////////"
+echo -e "//////////////               /////////////////////////////////////////////////////////////////////////////"
+echo -e "////////    ////           ////    ////////////////////////////////*  *///////////////////////////////////"
+echo -e "/////        /////////////////        ////////////////////////////.   ,///////////////////////***/////////"
+echo -e "////         /////////////////          /////////////////////////*    ///////////////////////.   ,////////"
+echo -e "///         ////////////////////        /////////////////////////.   ,//////////////////////*.   /////////"
+echo -e "///      /////////////////////////      //////////////*             .//////*.         .*//*           *///"
+echo -e "////////////////////////////////////////////////////,.   .,,**,.    ,///*,    .,,,.    ***,.    ,,,,,*////"
+echo -e "/////  ///////////////////////////////////////////*.   ,*//////,   ,*//*    *//////,   ,//*.   ,//////////"
+echo -e "///       ///////////////////////       /////////*.   *///////,    *//*    *///////,   ,//*   .///////////"
+echo -e "///         ///////////////////         ////////*     ///////,    .*//,   .///////,    */*.   ,/////**////"
+echo -e "////         /////////////////         /////////*     ,///*,.     ,**,     *////*.   .///*.   ,//*.   ,///"
+echo -e "//////       /////////////////       ////////////,.         ,,       .,.           ,*/////,         .*////"
+echo -e "///////////////             ////////////////////////**,,,,,*///*,,,,*/////*,,,,**///////////*,,,,**///////"
+echo -e "///////////////             //////////////////////////////////////////////////////////////////////////////"
+echo -e "//////////////////       /////////////////////////////////////////////////////////////////////////////////"
+echo -e "//////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo -e ""
+echo -e "==========================================================================================================\n"
+echo -e "                           🎉🔐🔏 Blockchain Academy Proof-of-Win (PWN) 🔏🔐🎉\n"
+echo -e "==========================================================================================================\n"
+echo -e "                                         This script processes a:"
+echo -e "                                            - ⚠PRIZE SECRET⚠"
+echo -e "                                            - ⚠PRIVATE  KEY⚠"
+echo -e "                              *without* writing them to disk or terminal history.\n"
+echo -e "                               It outputs a \"PWN-<your address>.json\" to submit"
+echo -e "                                      to the Academy team to verify 🕵️\n"
+echo -e "                             You could use any Substrate compatible wallet to sign,"
+echo -e "                            and instead use the \"generate-proof-of-win-signature.sh\"\n"
 
-echo "  🕸️ The network for the SS58 address (polkadot, kusama, some parachain...): "
+echo -e "  🕸️ The network for the SS58 address (polkadot, kusama, some parachain...): "
 read NETWORK
 
 # debug, uncomment to override:
-# NETWORK="polkadot"
+# NETWORK="kusama"
 
-echo "  📝 A pubic, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n" 
+echo -e "  📝 A public, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n" 
 read MESSAGE
 
 # debug, uncomment to override:
@@ -70,24 +71,31 @@ read MESSAGE
 # Using subkey, raw message
 # MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"
 
-echo "  🔑 Your PRIVATE KEY (hex encoding *or* mnemonic & derived path)"
-echo "  💸 THE PRIZE WILL BE SENT HERE (0x..... *or* [12|24 words here]//HD-Wallet///Path):"
-read PRIVATE
+echo -e "  🔑 Your PRIVATE KEY (hex encoding *or* mnemonic & derived path)"
+echo -en "  💸 THE PRIZE WILL BE SENT HERE (0x..... *or* [12|24 words here]//HD-Wallet///Path): <hidden input>"
+read -s PRIVKEY
 
 # debug, uncomment to override:
-# PRIVATE="middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
+# PRIVKEY="middle harsh axis absurd message meadow kick soccer empty left adult giraffe"
 # HD path works, but not used in most wallets 😭 :
-# PRIVATE="middle harsh axis absurd message meadow kick soccer empty left adult giraffe//some///path"
+# PRIVKEY="middle harsh axis absurd message meadow kick soccer empty left adult giraffe//some///path"
 
 # subkey needs an sURI = address SS58 or pubkey-hex or privkey-hex
-ADDRESS="$(subkey inspect "$PRIVATE" --network "$NETWORK" --output-type json | jq '.ss58Address' -rj)"
+PUBKEY="$(subkey inspect "$PRIVKEY" --network "$NETWORK" --output-type json | jq '.publicKey' -rj)"
+ADDRESS="$(subkey inspect "$PRIVKEY" --network "$NETWORK" --output-type json | jq '.ss58Address' -rj)"
 
-echo -n "  🙋 Your Pub Key (SS58) for $NETWORK = $ADDRESS"
 
-echo "  🙈 Your  provided secret is hashed for you by the script,"
-echo "     not exposed in the output.\n"
-echo "  🏆 Your prize secret (three words, space separated):"
-read SECRET
+echo -en "\n\n      🙋 Your Public Key (sr25519) = $PUBKEY"
+echo -e "\n\n      🙋 Your Address (SS58) for $NETWORK = $ADDRESS"
+echo -e "       👀 !!!!!!! BE SURE THESE ARE AS YOU EXPECT !!!!!!!\n\n"
+
+echo -e "                 👌 Press [ENTER] to continue..."
+read -s CONTINUE
+
+echo -e "  🙈 Your  provided secret is hashed for you by the script,"
+echo -e "     not exposed in the output.\n"
+echo -e "  🏆 Your prize secret (three words, space separated): <hidden input>"
+read -s SECRET
 
 # debug, uncomment to override:
 # SECRET="some thee words"
@@ -98,29 +106,29 @@ SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
 unset SECRET
 
 # Sign your provided message username (only)
-SIGNATURE="$(subkey sign --suri "$PRIVATE" --message "$MESSAGE")"
+SIGNATURE="$(subkey sign --suri "$PRIVKEY" --message "$MESSAGE")"
 
-# DELETE PRIVATE
-unset PRIVATE
+# DELETE PRIVKEY
+unset PRIVKEY
 
 FILE="PWN-""$ADDRESS"".json"
 
-echo "\n\n                    👇 🔐 $FILE 🔐 👇"
+echo -e "\n\n                    👇 🔐 $FILE 🔐 👇"
 
 # Write PWN-$ADDRESS.json
 jq -n --arg message "$MESSAGE" --arg ss58Address "$ADDRESS" --arg secretHash "$SECRET_HASH" --arg signature "$SIGNATURE" '.message = $message | .ss58Address = $ss58Address | .secretHash = $secretHash | .signature = $signature' > $FILE
 
 jq < $FILE
 
-echo "                   📬 Deliver $FILE 📬"
-echo "                   The Academy team will provide a link to upload or paste this json into.\n"
-echo -n "                                 🗑 Press [ENTER] to clear the screen..."
-read LESS
+echo -e "                   📬 Deliver $FILE 📬"
+echo -e "                   The Academy team will provide a link to upload or paste this json into.\n"
+echo -en "                                 🗑 Press [ENTER] to clear the screen..."
+read -s LESS
 clear
-echo -n "\n\n\n\n                                        Less Trust."
-read MORE
-echo            "                                        More Truth.\n\n\n\n"
-read MIC_DROP
+echo -en "\n\n\n\n                                        Less Trust.\n"
+read -s MORE
+echo -e           "                                        More Truth.\n\n\n\n"
+read -s MIC_DROP
 
 # debug, no HD path, most wallets:
 # {
