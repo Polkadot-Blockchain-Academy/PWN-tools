@@ -96,7 +96,7 @@ read PUB
 echo "  🙈 Your  provided secret is hashed for you by the script,"
 echo "     not exposed in the output.\n"
 echo "  🏆 Your prize secret (three words, space separated):"
-read -s SECRET
+read SECRET
 
 # debug, uncomment to override:
 # SECRET="some thee words"
