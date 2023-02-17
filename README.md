@@ -16,18 +16,7 @@ The scripts depend on installations of:
 
 - `sha512sum` (Install on: [MacOS](https://unix.stackexchange.com/questions/426837/no-sha256sum-in-macos) - [Linux & WSL](https://command-not-found.com/sha512sum) - from `coreutils` package)
 - `jq` (Install on: [MacOS](https://stackoverflow.com/questions/37668134/how-to-install-jq-on-mac-on-the-command-line) - [Linux & WSL](https://command-not-found.com/jq))
-- [Custom `subkey`](#install-custom-subkey) 👇
-
-### Install Custom Subkey
-
-[A patch](https://github.com/paritytech/substrate/pull/13258) is needed until it's applied to `master` on Substrate:
-
-```sh
-# Install the required custom `subkey v3.0.0`
-cargo install --force subkey --git https://github.com/paritytech/substrate
-```
-
-> **NOTE: you may want to revert to the `master` subkey branch installation, if you depend on old subkey behavior elsewhere!**
+- `subkey` (Install anywhere [with cargo](https://github.com/paritytech/substrate/tree/master/bin/utils/subkey), version 3 or above)
 
 These scripts gotta run 😉:
 
