@@ -24,7 +24,7 @@ The scripts depend on installations of:
 
 ```sh
 # Install the required custom `subkey v3.0.0`
-cargo install --force subkey --git https://github.com/paritytech/substrate --branch oty-subkey-respect-hex
+cargo install --force subkey --git https://github.com/paritytech/substrate
 ```
 
 > **NOTE: you may want to revert to the `master` subkey branch installation, if you depend on old subkey behavior elsewhere!**
