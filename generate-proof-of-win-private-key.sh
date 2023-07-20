@@ -47,7 +47,6 @@ echo -e "=======================================================================
 echo -e "                           🎉🔐🔏 Blockchain Academy Proof-of-Win (PWN) 🔏🔐🎉\n"
 echo -e "==========================================================================================================\n"
 echo -e "                                         This script processes a:"
-echo -e "                                            - ⚠PRIZE SECRET⚠"
 echo -e "                                            - ⚠PRIVATE  KEY⚠"
 echo -e "                              *without* writing them to disk or terminal history.\n"
 echo -e "                               It outputs a \"PWN-<your address>.json\" to submit"
@@ -92,19 +91,6 @@ echo -e "       👀 !!!!!!! BE SURE THESE ARE AS YOU EXPECT !!!!!!!\n\n"
 echo -e "                 👌 Press [ENTER] to continue..."
 read -s CONTINUE
 
-echo -e "  🙈 Your  provided secret is hashed for you by the script,"
-echo -e "     not exposed in the output.\n"
-echo -e "  🏆 Your prize secret (three words, space separated): <hidden input>"
-read -s SECRET
-
-# debug, uncomment to override:
-# SECRET="some thee words"
-
-SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
-
-# DELETE SECRET
-unset SECRET
-
 # Sign your provided message username (only)
 SIGNATURE="$(subkey sign --suri "$PRIVKEY" --message "$MESSAGE")"
 
@@ -116,7 +102,7 @@ FILE="PWN-""$ADDRESS"".json"
 echo -e "\n\n                    👇 🔐 $FILE 🔐 👇"
 
 # Write PWN-$ADDRESS.json
-jq -n --arg message "$MESSAGE" --arg ss58Address "$ADDRESS" --arg secretHash "$SECRET_HASH" --arg signature "$SIGNATURE" '.message = $message | .ss58Address = $ss58Address | .secretHash = $secretHash | .signature = $signature' > $FILE
+jq -n --arg message "$MESSAGE" --arg ss58Address "$ADDRESS" --arg signature "$SIGNATURE" '.message = $message | .ss58Address = $ss58Address | .signature = $signature' > $FILE
 
 jq < $FILE
 
@@ -134,7 +120,6 @@ read -s MIC_DROP
 # {
 #   "message": "I LIKE WINNING! BOOOOO YAAAAAA!",
 #   "ss58Address": "14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc",
-#   "secretHash": "0x58cf16bcdceec9bce18246eeaa2f3358a2cdfdb7dc98a3d5f61da18f841b057369c58e64a456e236e853d853ef088a0eb57551a2a2b124c3060d5f402a2bf0a3",
 #   "signature": "0x683dc112821364f6201f5e6c231a156ae8a4bc10a931972825543c6e8f273e47b271756d70366ba154fb29ea15360d3210f8e05951d64dd27518c8fd3476a587"
 # } 
 # Tested to verify correctly on https://polkadot.js.org/apps/#/signing/verify
@@ -145,6 +130,5 @@ read -s MIC_DROP
 # {
 #   "message": "I LIKE WINNING! BOOOOO YAAAAAA!",
 #   "ss58Address": "14VJA6QWfE7iEXsvrcE8vmF5wnEqEfimG8s35VfWU1TJYPVR",
-#   "secretHash": "0x58cf16bcdceec9bce18246eeaa2f3358a2cdfdb7dc98a3d5f61da18f841b057369c58e64a456e236e853d853ef088a0eb57551a2a2b124c3060d5f402a2bf0a3",
 #   "signature": "0xde6b453a72d65de1661305af10595c9126e72bc75a475d299635229bc69ac20e3aff52e0cb5c8059224f16d2231ede92e8ff37d3739099d9fe20df0c0863bb84"
 # }

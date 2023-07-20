@@ -47,12 +47,11 @@ echo -e "=======================================================================
 echo -e "                           🎉🔐🔏 Blockchain Academy Proof-of-Win (PWN) 🔏🔐🎉\n"
 echo -e "==========================================================================================================\n"
 echo -e "                                         This script processes a:"
-echo -e "                                            - ⚠PRIZE SECRET⚠"
 echo -e "                                            - SIGNED MESSAGE"
 echo -e "                              *without* writing them to disk or terminal history.\n"
 echo -e "                               It outputs a \"PWN-<your address>.json\" to submit"
 echo -e "                                      to the Academy team to verify 🕵️\n"
-echo -e "                           Alternatively, you could subkey to sign, providing a secret"
+echo -e "                                   Alternatively, you could subkey to sign"
 echo -e "                            Use \"generate-proof-of-win-private-key.sh\" instead\n"
 
 echo -e "  🕸️ The network for the SS58 address (polkadot, kusama, some parachain...): "
@@ -62,7 +61,7 @@ read NETWORK
 # NETWORK="kusama"
 
 echo -en "  🔏 Your need to sign a message out of band from this script.\nProvide a"
-echo -e "  📝 A public, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n"
+echo -e  "  📝 A public, pseudononymous, message for the Academy class (any text, without \"quotes\"):\n"
 
 read UNWRAPED_MESSAGE
 
@@ -105,24 +104,12 @@ echo -e "       👀 !!!!!!! BE SURE THESE ARE AS YOU EXPECT !!!!!!!\n\n"
 echo -e "                 👌 Press [ENTER] to continue..."
 read -s CONTINUE
 
-echo -e "  🙈 Your  provided secret is hashed for you by the script, not exposed in the output.\n"
-echo -e "  🏆 Your prize secret (three words, space separated): <hidden input>"
-read -s SECRET
-
-# debug, uncomment to override:
-# SECRET="some thee words"
-
-SECRET_HASH="0x$(printf "$SECRET" | sha512sum | awk '{print $1}')"
-
-# DELETE SECRET
-unset SECRET
-
 FILE="PWN-""$ADDRESS"".json"
 
 echo -e "\n\n                    👇 🔐 $FILE 🔐 👇"
 
 # Write PWN-$ADDRESS.json
-jq -n --arg message "$MESSAGE" --arg ss58Address "$ADDRESS" --arg secretHash "$SECRET_HASH" --arg signature "$SIGNATURE" '.message = $message | .ss58Address = $ss58Address | .secretHash = $secretHash | .signature = $signature' > $FILE
+jq -n --arg message "$MESSAGE" --arg ss58Address "$ADDRESS" --arg signature "$SIGNATURE" '.message = $message | .ss58Address = $ss58Address | .signature = $signature' > $FILE
 
 jq < $FILE
 
@@ -140,7 +127,6 @@ read -s MIC_DROP
 # {
 #   "message": "<Bytes>I LIKE WINNING! BOOOOO YAAAAAA!</Bytes>",
 #   "ss58Address": "14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc",
-#   "secretHash": "0x58cf16bcdceec9bce18246eeaa2f3358a2cdfdb7dc98a3d5f61da18f841b057369c58e64a456e236e853d853ef088a0eb57551a2a2b124c3060d5f402a2bf0a3",
 #   "signature": "0x78bea5e6ae9973c9842e33c1f37109fd5a8dc4f954cd22a133756a7590fffd0363f956afd24a16a6bcb00a3ce7bfdcc8045dad80b421bd01a8948ff9d2853e8a"
 # }
 # Tested to verify correctly using the UNWRAPPED message "I LIKE WINNING! BOOOOO YAAAAAA!" on https://polkadot.js.org/apps/#/signing/verify
