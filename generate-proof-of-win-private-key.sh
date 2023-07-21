@@ -8,9 +8,6 @@
 # Polkadot Blockchain Academy - UNLICENSE - 2023-02-01
 # #####################################################################
 
-## TODO ONCE RESOLVED UPDATE TO MATCH UNIFORM BEHAVIOR:
-## https://github.com/polkadot-js/apps/issues/8930
-
 clear
 echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo -e "                  Make sure to read and understand what this script does before you use it!"
@@ -64,8 +61,7 @@ echo -e "  📝 A public, pseudononymous, message for the Academy class (any tex
 read MESSAGE
 
 # debug, uncomment to override:
-# using Polkadot JS API/Apps, wrapped
-# for now, use generate-proof-of-win-SIGNATURE.sh instead. see TODO above
+# using Polkadot JS API/Apps, wrapped because https://github.com/polkadot-js/apps/issues/8930
 # MESSAGE=<Bytes>I LIKE WINNING! BOOOOO YAAAAAA!</Bytes>
 # Using subkey, raw message
 # MESSAGE="I LIKE WINNING! BOOOOO YAAAAAA!"

@@ -8,9 +8,6 @@
 # Polkadot Blockchain Academy - UNLICENSE - 2023-02-01
 # #####################################################################
 
-## TODO ONCE RESOLVED UPDATE TO MATCH UNIFORM BEHAVIOR:
-## https://github.com/polkadot-js/apps/issues/8930
-
 clear
 echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo -e "                  Make sure to read and understand what this script does before you use it!"
