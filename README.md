@@ -10,7 +10,6 @@ Included here are scripts to generate and verify a **Proof-of-Winning (PWN)** JS
 PWN requires you come with:
 
 - 🙋 A **SS58 compliant Address** that you have the private key for.
-- 🏆 A **prize secret** from the Academy games (three words).
 
 The scripts depend on installations of:
 
