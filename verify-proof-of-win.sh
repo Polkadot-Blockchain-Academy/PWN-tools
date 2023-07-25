@@ -23,7 +23,6 @@ subkey verify --message "$(jq '.message' "$1" -rj)" "$(jq '.signature' "$1" -rj)
 # {
 #   "message": "I LIKE WINNING! BOOOOO YAAAAAA!",
 #   "ss58Address": "14XeJg226wvHG6PWmhKUsrv5PmeccjbXwFe9pVrBbryEWeZc",
-#   "secretHash": "0x58cf16bcdceec9bce18246eeaa2f3358a2cdfdb7dc98a3d5f61da18f841b057369c58e64a456e236e853d853ef088a0eb57551a2a2b124c3060d5f402a2bf0a3",
 #   "signature": "0x683dc112821364f6201f5e6c231a156ae8a4bc10a931972825543c6e8f273e47b271756d70366ba154fb29ea15360d3210f8e05951d64dd27518c8fd3476a587"
 # } 
 # Tested to verify correctly on https://polkadot.js.org/apps/#/signing/verify
