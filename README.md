@@ -30,7 +30,7 @@ chmod +x generate-proof-of-win-signature.sh generate-proof-of-win-private-key.sh
 
 > 😱 You would just put secrets into some random executable you found online?!
 >
-> 🫠 ... and put your \_secrets into it?!
+> 🫠 ... and put your _secrets_ into it?!
 
 ### ❗❗ BEFORE YOU START, READ THE `.sh` SCRIPTS INCLUDED HERE! ❗❗
 
