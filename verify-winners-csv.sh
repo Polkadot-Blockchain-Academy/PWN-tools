@@ -1,7 +1,7 @@
 #!/bin/bash
 # #####################################################################
 # Polkadot Blockchain Academy Proof-of-Winning tools
-# Hash a custom csv file with secrets to get sha512sum(secret)
+# Verify CSV file with signed messages and plain-text addresses
 # 
 # $ ./verify-winners-csv.sh some-input.csv > verified.csv 
 # 
@@ -10,7 +10,7 @@
 
 i=0
 
-while IFS=, read -r MESSAGE ADDRESS SECRET_HASH SIGNATURE
+while IFS=, read -r MESSAGE ADDRESS SIGNATURE
 do
     echo -e "\n\n$MESSAGE $SIGNATURE $ADDRESS"
     subkey verify --message "$MESSAGE" "$SIGNATURE" "$ADDRESS"
